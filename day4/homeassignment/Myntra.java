@@ -29,6 +29,11 @@ public class Myntra {
 		WebElement Laptop_bag = driver
 				.findElement(By.xpath("//ul[@class='categories-list']//input[@value='Laptop Bag']"));
 		driver.executeScript("arguments[0].click()", Laptop_bag);
+		try {
+			Thread.sleep(2000); // Wait for 2 seconds
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+		}		
 		List<WebElement> listItems = driver.findElements(By.xpath("//ul[@class='results-base']/li"));
 		int numberOfLaptop = listItems.size();
 		System.out.println("Number of Laptop   " + numberOfLaptop);
@@ -51,6 +56,26 @@ public class Myntra {
 				System.out.println(brandName);
 			}
 		}
+		////div[@class='product-productMetaInfo']/h3
+		//li[@class='product-base']//div[@class='product-productMetaInfo']/h3
+		List<WebElement> product=driver.findElements(By.cssSelector("h3.product-brand"));
+		String productName="";
+		System.out.println("***************");
+		System.out.println("***************");
+		System.out.println("***************");
+		System.out.println("***************");
+		System.out.println("***************");
+		System.out.println("The product names are");
+		for(int i=0;i<product.size();i++) {
+			productName=product.get(i).getText();
+			if(!productName.isEmpty()) {
+				System.out.println(productName);
+			}
+			
+		}
+	
+	
+	
 	}
 
 }
